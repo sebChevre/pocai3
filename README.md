@@ -1,0 +1,1 @@
+doc: http://javasampleapproach.com/spring-framework/spring-boot/use-spring-jms-activemq-jms-consumer-jms-producer-spring-boot
