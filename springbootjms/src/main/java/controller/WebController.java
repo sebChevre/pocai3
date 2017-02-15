@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @EnableAutoConfiguration
-@ComponentScan
+@ComponentScan(basePackages = "client.impl")
 public class WebController {
 
     @Autowired
