@@ -1,4 +1,4 @@
-package ch.sebooom.pocjms.infrastructure.jms;
+package ch.sebooom.pocjms.infrastructure.jms.queue;
 
 import ch.sebooom.pocjms.domain.message.Publisher;
 
