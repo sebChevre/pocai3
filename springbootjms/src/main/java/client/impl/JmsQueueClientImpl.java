@@ -1,22 +1,22 @@
 package client.impl;
 
-import client.JmsClient;
-import consumer.JmsConsumer;
+import client.JmsQueueClient;
+import consumer.JmsQueueConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import producer.JmsProducer;
+import producer.JmsQueueProducer;
 
 /**
  * Created by sce on 15.02.2017.
  */
 @Component
-public class JmsClientImpl implements JmsClient {
+public class JmsQueueClientImpl implements JmsQueueClient {
 
     @Autowired
-    JmsConsumer jmsConsumer;
+    JmsQueueConsumer jmsQueueConsumer;
 
     @Autowired
-    JmsProducer jmsProducer;
+    JmsQueueProducer jmsProducer;
 
     @Override
     public void send(String msg) {
@@ -25,6 +25,6 @@ public class JmsClientImpl implements JmsClient {
 
     @Override
     public String receive() {
-        return jmsConsumer.receive();
+        return jmsQueueConsumer.receive();
     }
 }

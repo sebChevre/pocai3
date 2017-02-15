@@ -1,1 +1,2 @@
 doc: http://javasampleapproach.com/spring-framework/spring-boot/use-spring-jms-activemq-jms-consumer-jms-producer-spring-boot
+http://websystique.com/spring/spring-4-jms-activemq-example-with-jmslistener-enablejms/

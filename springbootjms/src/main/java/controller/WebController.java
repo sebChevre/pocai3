@@ -1,10 +1,10 @@
 package controller;
 
-import client.JmsClient;
+import client.JmsQueueClient;
+import client.JmsTopicClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,21 +14,30 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "client.impl")
 public class WebController {
 
     @Autowired
-    JmsClient jsmClient;
+    JmsQueueClient jmsQueueClient;
 
-    @RequestMapping(value="/produce")
-    public String produce(@RequestParam("msg")String msg){
-        jsmClient.send(msg);
-        return "Done";
+    @Autowired
+    JmsTopicClient jmsTopicClient;
+
+
+    @RequestMapping(value="/queue/produce")
+    public String queueProduce(@RequestParam("msg")String msg){
+        jmsQueueClient.send(msg);
+        return "Queue msg produce Done";
+    }
+
+    @RequestMapping(value="/topic/produce")
+    public String topicProduce(@RequestParam("msg")String msg){
+        jmsTopicClient.send(msg);
+        return "Topic msg produce Done";
     }
 
     @RequestMapping(value="/receive")
     public String receive(){
-        return jsmClient.receive();
+        return jmsQueueClient.receive();
     }
     public static void main(String[] args) {
         SpringApplication.run(WebController.class,args);
