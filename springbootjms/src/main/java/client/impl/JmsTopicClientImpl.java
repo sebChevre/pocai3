@@ -1,6 +1,7 @@
 package client.impl;
 
 import client.JmsTopicClient;
+import consumer.JmsTopicConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import producer.JmsTopicProducer;
@@ -13,8 +14,8 @@ import producer.JmsTopicProducer;
 @Component
 public class JmsTopicClientImpl implements JmsTopicClient {
 
-    //@Autowired
-    //JmsTopicConsumer jmsQueueConsumer;
+    @Autowired
+    JmsTopicConsumer jmsQueueConsumer;
 
     @Autowired
     JmsTopicProducer jmsProducer;

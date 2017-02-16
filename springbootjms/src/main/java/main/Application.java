@@ -1,7 +1,7 @@
 package main;
 
 import client.ClientPackageMarker;
-import config.JmsConfig;
+import config.MessagingConfiguration;
 import consumer.ConsumerPackageMarker;
 import controller.ControllerPackageMarker;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +21,7 @@ import producer.ProducerPackageMarker;
         ConsumerPackageMarker.class,
         ProducerPackageMarker.class,
         ControllerPackageMarker.class,
-        JmsConfig.class
+        MessagingConfiguration.class
 })
 
 public class Application {

@@ -25,7 +25,8 @@
 	<modules>
 		<module>pocjms</module>
         <module>springbootjms</module>
-    </modules>
+		<module>jmstopicexample</module>
+	</modules>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-client -->

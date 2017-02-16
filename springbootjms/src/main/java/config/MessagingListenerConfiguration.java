@@ -9,13 +9,11 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import javax.jms.ConnectionFactory;
 
 /**
- * Created by seb on .
- * <p>
- * ${VERSION}
+ * Created by sce on 16.02.2017.
  */
 @Configuration
 @EnableJms
-public class JmsConfig {
+public class MessagingListenerConfiguration {
 
     @Autowired
     ConnectionFactory connectionFactory;
@@ -25,6 +23,8 @@ public class JmsConfig {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setConcurrency("1-1");
+        factory.setPubSubDomain(Boolean.TRUE);
         return factory;
     }
+
 }

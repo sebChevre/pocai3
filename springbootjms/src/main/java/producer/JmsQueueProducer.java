@@ -1,6 +1,7 @@
 package producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class JmsQueueProducer {
     @Autowired
-    JmsTemplate jmsTemplate;
+    @Qualifier("jmsQueueTemplate")
+    JmsTemplate jmsQueueTemplate;
 
     @Value("${jms.queue.destination}")
     String destinationQueue;
@@ -19,6 +21,6 @@ public class JmsQueueProducer {
     public void send(String msg){
 
 
-        jmsTemplate.convertAndSend(destinationQueue, msg);
+        jmsQueueTemplate.convertAndSend(destinationQueue, msg);
     }
 }
