@@ -2,6 +2,7 @@ package main;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,8 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import javax.jms.ConnectionFactory;
+import java.util.Arrays;
 import java.util.concurrent.Executor;
 
 /**
@@ -55,15 +58,21 @@ public class AppConfig implements AsyncConfigurer{
         return template;
     }
     @Bean
-    public ActiveMQConnectionFactory connectionFactory(){
+    public ConnectionFactory connectionFactory(){
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
         connectionFactory.setBrokerURL(ActiveMQConnection.DEFAULT_BROKER_URL);
-        //connectionFactory.setTrustedPackages(Arrays.asList("com.websystique.spring","java.util"));
+        connectionFactory.setTrustedPackages(Arrays.asList("main","java.util"));
         return connectionFactory;
     }
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public ActiveMQTopic activeMqTopic(){
+        ActiveMQTopic topic = new ActiveMQTopic("DEMO-JMS-TOPIC");
+        return topic;
     }
 
     @Bean
