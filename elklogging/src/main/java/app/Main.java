@@ -39,21 +39,27 @@ public class Main {
         Executor exe = Executors.newFixedThreadPool(4);
         log.setLevel(Level.FINEST);
 
-        for(int cpt = 0; cpt < 10000; cpt ++){
+        for(int cpt=0;  cpt<4;cpt ++){
             exe.execute(new Runnable() {
                 @Override
                 public void run() {
-                   generateAleatoireLevelLog();
-                    try {
-                        Thread.sleep((long)new Random().nextInt(3000));
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+
+                    while(true){
+                        generateAleatoireLevelLog();
+                        try {
+                            Thread.sleep((long)new Random().nextInt(3000));
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
+
                 }
             });
-
-
         }
+
+
+
+
 
     }
 
