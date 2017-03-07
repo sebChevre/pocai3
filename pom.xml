@@ -28,6 +28,7 @@
 		<module>jmstopicexample</module>
         <module>specificationpattern</module>
         <module>elklogging</module>
+        <module>jwtsample</module>
     </modules>
 
 	<dependencies>
